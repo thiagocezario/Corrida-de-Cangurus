@@ -31,7 +31,6 @@ public class Canguru extends Thread {
 		
 		while (Principal.colocacao < 6) {
 			buffer.pular(0, Principal.distanciaTotal, distanciaPulada, turnoDoCanguru);
-			System.out.println(Principal.colocacao);
 		}
 	}
 }
