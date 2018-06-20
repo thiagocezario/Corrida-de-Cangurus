@@ -16,9 +16,9 @@ public class Canguru extends Thread {
 			try {
 				int distanciaDoPulo = Principal.distancia(0, 10);
 				
-				
+				//Thread.sleep(1000);
 				distanciaPulada += buffer.pular(distanciaDoPulo, Principal.distanciaTotal, distanciaPulada, turnoDoCanguru);
-				
+				//Principal.canguruDaVez++;
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
@@ -27,7 +27,6 @@ public class Canguru extends Thread {
 		if (distanciaPulada >= Principal.distanciaTotal) {
 			System.err.println(Thread.currentThread().getName() + " terminou a corrida em " + Principal.colocacao + "º lugar");
 			Principal.colocacao++;
-			SyncBuffer.primeiroCanguru++;
 		}
 		
 		while (Principal.colocacao < 6) {

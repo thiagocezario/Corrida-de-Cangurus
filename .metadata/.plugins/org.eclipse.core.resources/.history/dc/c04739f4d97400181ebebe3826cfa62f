@@ -1,8 +1,8 @@
 
 public class SyncBuffer {
 	private int buffer = -1;
+	//public int aux = 0;
 	private int rodada = 0;
-	public static int primeiroCanguru = 0;
 	
 	public synchronized int pular(int distanciaDoPulo, int distanciaTotal, int distanciaPulada, int turnoDoCanguru) {
 		try {
@@ -18,17 +18,6 @@ public class SyncBuffer {
 			return buffer;
 		}
 		
-		
-		
-		if (Principal.canguruDaVez%5 == primeiroCanguru) {
-			System.err.println("\n-----Rodada " + (rodada+1) + "-----\n");
-			rodada++;
-		}
-		
-		distanciaPulada += distanciaDoPulo;
-		System.err.println(Thread.currentThread().getName() + " pulou " + distanciaDoPulo + "m de " + distanciaTotal + "m, para um total de " + distanciaPulada + "m");
-		buffer = distanciaDoPulo;
-		
 		if (Principal.canguruDaVez%5 == 4) {
 			try {
 				wait(5000);
@@ -37,6 +26,15 @@ public class SyncBuffer {
 				e.printStackTrace();
 			}
 		}
+		
+		if (Principal.canguruDaVez%5 == 0) {
+			System.err.println("\n-----Rodada " + (rodada+1) + "-----\n");
+			rodada++;
+		}
+		
+		distanciaPulada += distanciaDoPulo;
+		System.err.println(Thread.currentThread().getName() + " pulou " + distanciaDoPulo + "m de " + distanciaTotal + "m, para um total de " + distanciaPulada + "m");
+		buffer = distanciaDoPulo;
 		
 		Principal.canguruDaVez += 1;
 		
