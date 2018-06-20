@@ -1,0 +1,25 @@
+import java.util.Random;
+
+public class Principal {
+
+	public static int colocacao = 0;
+	public static int canguruDaVez = 0;
+	public static int distanciaTotal = distancia(80, 100);
+	
+	
+	public static int distancia(int minimo, int maximo) {
+		Random rand = new Random();
+		return rand.nextInt(maximo - minimo) + minimo;
+	}
+	
+	public static void main(String[] args) {
+		SyncBuffer buffer = new SyncBuffer();		
+		
+		Canguru c1 = new Canguru("Canguru 1", buffer);
+		Canguru c2 = new Canguru("Canguru 2", buffer);
+		c1.start();
+		c2.start();
+
+	}
+
+}

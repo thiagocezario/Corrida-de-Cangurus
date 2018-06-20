@@ -1,0 +1,23 @@
+
+public class SyncBuffer {
+	private int buffer = -1;
+	public int aux = 0;
+	
+	public synchronized int pular(int distanciaDoPulo, int distanciaTotal, int distanciaPulada) {
+		try {
+			while(aux%5 != Principal.canguruDaVez) {
+				wait();
+			}
+		} catch (Exception ex) {
+			ex.getStackTrace();
+		}
+		System.err.println(Thread.currentThread().getName() + " pulou " + distanciaDoPulo + "m de " + distanciaTotal + "m, para um total de " + distanciaPulada + "m");
+		buffer = distanciaDoPulo;
+		
+		aux++;
+		Principal.canguruDaVez++;
+		notify();
+		
+		return buffer;
+	}
+}

@@ -1,0 +1,30 @@
+
+public class Canguru extends Thread {
+	private SyncBuffer buffer;
+	
+	public Canguru(String nome, SyncBuffer buffer) {
+		super(nome);
+		this.buffer = buffer;
+	}
+	
+	public void run() {
+		int distanciaPulada = 0;
+		
+		while (distanciaPulada < Principal.distanciaTotal) {
+			try {
+				int distanciaDoPulo = Principal.distancia(0, 10);
+				
+				Thread.sleep((int)(Math.random()*2001));
+				distanciaPulada += buffer.pular(distanciaDoPulo, Principal.distanciaTotal, distanciaPulada);
+				//Principal.canguruDaVez++;
+			} catch (InterruptedException ex) {
+				ex.printStackTrace();
+			}
+		}
+		
+		if (distanciaPulada > Principal.distanciaTotal) {
+			Principal.colocacao++;
+			System.err.println(Thread.currentThread().getName() + " terminou a corrida em " + Principal.colocacao + "º lugar");
+		}
+	}
+}
