@@ -6,13 +6,14 @@ public class SyncBuffer {
 	public synchronized int pular(int distanciaDoPulo, int distanciaTotal, int distanciaPulada, int turnoDoCanguru) {
 		try {
 			while(turnoDoCanguru != Principal.canguruDaVez%5) {
-				wait(500);
+				wait(1000);
 			}
 		} catch (Exception ex) {
 			ex.getStackTrace();
 		}
 				
 		if (distanciaPulada >= distanciaTotal) {
+			Principal.canguruDaVez += 1;
 			return buffer;
 		}
 		
