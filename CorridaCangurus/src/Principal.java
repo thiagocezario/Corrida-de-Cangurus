@@ -2,16 +2,26 @@ import java.util.Random;
 
 public class Principal {
 
+	/*
+	 * colocacao eh a colocacao do canguru quando encerrar a corrida
+	 * canguruDaVez indica qual canguru deve pular
+	 * distanciaTotal eh a distancia do percurso, varia de 80m a 100m
+	 */
 	public static int colocacao = 1;
 	public static int canguruDaVez = 0;
 	public static int distanciaTotal = distancia(80, 100);
 	
-	
+	/*
+	 * Gera um numero aleatorio entre os limites estabelecidos
+	 */
 	public static int distancia(int minimo, int maximo) {
 		Random rand = new Random();
 		return rand.nextInt(maximo - minimo) + minimo;
 	}
 	
+	/*
+	 * Cria as threads e inicia elas
+	 */
 	public static void main(String[] args) {
 		SyncBuffer buffer = new SyncBuffer();		
 		
