@@ -9,7 +9,7 @@ public class Principal {
 	 */
 	public static int colocacao = 1;
 	public static int canguruDaVez = 0;
-	public static int distanciaTotal = distancia(80, 101);
+	public static int distanciaTotal = distancia(40, 51);
 	
 	/*
 	 * Gera um numero aleatorio entre os limites estabelecidos

@@ -26,7 +26,7 @@ public class SyncBuffer {
 			 * Principal.canguruDaVez%5 eh pra nao precisar se preocupar em resetar a variavel de ordem, desse jeito ela sempre vai oscilar de 0 a 4
 			 */
 			while(turnoDoCanguru != Principal.canguruDaVez%5) {
-				wait(1000);
+				wait(100);
 			}
 		} catch (Exception ex) {
 			ex.getStackTrace();
@@ -77,7 +77,7 @@ public class SyncBuffer {
 		 */
 		if (Principal.canguruDaVez%5 == ultimoCanguru && distanciaPulada < distanciaTotal) {
 			try {
-				wait(2500);
+				wait(500);
 				System.err.println("\n\n\n");
 				System.err.println("\n-----Rodada " + (rodada+1) + "-----\n");
 				rodada++;

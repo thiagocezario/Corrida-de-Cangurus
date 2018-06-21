@@ -48,10 +48,12 @@ public class Canguru extends Thread {
 		 * SyncBuffer.primeiroCanguru serve para controlar o print da rodada, ainda nao esta funcionando corretamente
 		 */
 		if (distanciaPulada >= Principal.distanciaTotal) {
-			System.err.println(Thread.currentThread().getName() + " terminou a corrida em " + Principal.colocacao + "º lugar");
-			Principal.colocacao++;
-			SyncBuffer.primeiroCanguru++;
 			
+			/*
+			 * Esses ifs sao pra checar qual canguru ainda esta correndo
+			 * sao usados no SyncBuffer pra imprimir a rodada e pra pausa
+			 * Foram feitos na tentativa e erro e estao feios pra caralho
+			 */
 			if(turnoDoCanguru == 0) {
 				c1EstaNaCorrida = false;
 			}
@@ -70,7 +72,24 @@ public class Canguru extends Thread {
 			
 			if(turnoDoCanguru == 4) {
 				c5EstaNaCorrida = false;
+			}			
+			
+			System.err.println(Thread.currentThread().getName() + " terminou a corrida em " + Principal.colocacao + "º lugar");
+			Principal.colocacao++;
+			
+			if (turnoDoCanguru == SyncBuffer.ultimoCanguru) {
+				System.err.println("\n\n\n");
+				
+				if (c1EstaNaCorrida ||
+						c2EstaNaCorrida ||
+						c3EstaNaCorrida ||
+						c4EstaNaCorrida ||
+						c5EstaNaCorrida) {
+					System.err.println("\n-----Rodada " + (SyncBuffer.rodada+1) + "-----\n");
+					SyncBuffer.rodada++;
+				}
 			}
+			
 		}
 		
 		/*
