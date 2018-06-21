@@ -7,8 +7,9 @@ public class SyncBuffer {
 	 */
 	private int buffer = -1;
 	public static int rodada = 1;
+	public static int primeiroCanguru = 0;
 	public static int ultimoCanguru = 4;
-	private int numeroDeCangurus = 5;
+
 	public static boolean c1EstaNaCorrida = true;
 	public static boolean c2EstaNaCorrida = true;
 	public static boolean c3EstaNaCorrida = true;
@@ -29,8 +30,8 @@ public class SyncBuffer {
 			 * wait(1000) eh pra atualizar a checagem de vez, notify() nao funcionou
 			 * Principal.canguruDaVez%5 eh pra nao precisar se preocupar em resetar a variavel de ordem, desse jeito ela sempre vai oscilar de 0 a 4
 			 */
-			while(turnoDoCanguru != Principal.canguruDaVez%numeroDeCangurus) {
-				wait(500);
+			while(turnoDoCanguru != Principal.canguruDaVez%5) {
+				wait(1000);
 			}
 		} catch (Exception ex) {
 			ex.getStackTrace();
@@ -57,15 +58,15 @@ public class SyncBuffer {
 		 * Outra cadeia de if feia pra porra
 		 * Valida qual o ultimo canguru da rodada considerando os que estao correndo apenas
 		 */
-		if (c5EstaNaCorrida) {
+		if (Canguru.c5EstaNaCorrida) {
 			ultimoCanguru = 4;
-		} else if (c4EstaNaCorrida) {
+		} else if (Canguru.c4EstaNaCorrida) {
 			ultimoCanguru = 3;
-		} else if (c3EstaNaCorrida) {
+		} else if (Canguru.c3EstaNaCorrida) {
 			ultimoCanguru = 2;
-		} else if (c2EstaNaCorrida) {
+		} else if (Canguru.c2EstaNaCorrida) {
 			ultimoCanguru = 1;
-		} else if (c1EstaNaCorrida) {
+		} else if (Canguru.c1EstaNaCorrida) {
 			ultimoCanguru = 0;
 		}
 		
@@ -79,9 +80,10 @@ public class SyncBuffer {
 		 * pq as vezes a thread nao passava a tempo na outra classe a ponto de impedir de entrar aqui, ai o ultimo canguru ficava
 		 * como um que ja finalizou e rolava um wait() no lugar errado
 		 */
-		if (Principal.canguruDaVez%numeroDeCangurus == ultimoCanguru && distanciaPulada < distanciaTotal) {
+		if (Principal.canguruDaVez%5 == ultimoCanguru && distanciaPulada < distanciaTotal) {
 			try {
-				wait(1500);
+				wait(2500);
+				System.err.println("\n\n\n");
 				System.err.println("\n-----Rodada " + (rodada+1) + "-----\n");
 				rodada++;
 			} catch (InterruptedException e) {

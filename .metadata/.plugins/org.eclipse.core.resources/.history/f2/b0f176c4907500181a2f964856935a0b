@@ -78,8 +78,8 @@ public class Canguru extends Thread {
 				if (SyncBuffer.c1EstaNaCorrida ||
 						SyncBuffer.c2EstaNaCorrida ||
 						SyncBuffer.c3EstaNaCorrida ||
-						SyncBuffer.c4EstaNaCorrida ||
-						SyncBuffer.c5EstaNaCorrida) {
+						c4EstaNaCorrida ||
+						c5EstaNaCorrida) {
 					System.err.println("\n-----Rodada " + (SyncBuffer.rodada+1) + "-----\n");
 					SyncBuffer.rodada++;
 				}

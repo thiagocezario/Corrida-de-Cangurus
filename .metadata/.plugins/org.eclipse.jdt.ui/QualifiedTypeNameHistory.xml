@@ -3,4 +3,5 @@
 <fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="java.util.concurrent.BrokenBarrierException"/>
 <fullyQualifiedTypeName name="java.util.concurrent.CyclicBarrier"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

@@ -2,6 +2,11 @@
 public class Canguru extends Thread {
 	private SyncBuffer buffer;
 	private int turnoDoCanguru = 0;
+	public static boolean c1EstaNaCorrida = true;
+	public static boolean c2EstaNaCorrida = true;
+	public static boolean c3EstaNaCorrida = true;
+	public static boolean c4EstaNaCorrida = true;
+	public static boolean c5EstaNaCorrida = true;
 	
 	/*
 	 * Construtor do canguru
@@ -50,23 +55,23 @@ public class Canguru extends Thread {
 			 * Foram feitos na tentativa e erro e estao feios pra caralho
 			 */
 			if(turnoDoCanguru == 0) {
-				SyncBuffer.c1EstaNaCorrida = false;
+				c1EstaNaCorrida = false;
 			}
 			
 			if(turnoDoCanguru == 1) {
-				SyncBuffer.c2EstaNaCorrida = false;
+				c2EstaNaCorrida = false;
 			}
 			
 			if(turnoDoCanguru == 2) {
-				SyncBuffer.c3EstaNaCorrida = false;
+				c3EstaNaCorrida = false;
 			}
 			
 			if(turnoDoCanguru == 3) {
-				SyncBuffer.c4EstaNaCorrida = false;
+				c4EstaNaCorrida = false;
 			}
 			
 			if(turnoDoCanguru == 4) {
-				SyncBuffer.c5EstaNaCorrida = false;
+				c5EstaNaCorrida = false;
 			}			
 			
 			System.err.println(Thread.currentThread().getName() + " terminou a corrida em " + Principal.colocacao + "º lugar");
@@ -75,11 +80,11 @@ public class Canguru extends Thread {
 			if (turnoDoCanguru == SyncBuffer.ultimoCanguru) {
 				System.err.println("\n\n\n");
 				
-				if (SyncBuffer.c1EstaNaCorrida ||
-						SyncBuffer.c2EstaNaCorrida ||
-						SyncBuffer.c3EstaNaCorrida ||
-						SyncBuffer.c4EstaNaCorrida ||
-						SyncBuffer.c5EstaNaCorrida) {
+				if (c1EstaNaCorrida ||
+						c2EstaNaCorrida ||
+						c3EstaNaCorrida ||
+						c4EstaNaCorrida ||
+						c5EstaNaCorrida) {
 					System.err.println("\n-----Rodada " + (SyncBuffer.rodada+1) + "-----\n");
 					SyncBuffer.rodada++;
 				}
