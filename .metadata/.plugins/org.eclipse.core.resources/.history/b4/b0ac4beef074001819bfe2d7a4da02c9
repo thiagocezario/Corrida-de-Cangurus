@@ -32,25 +32,12 @@ public class SyncBuffer {
 			ex.getStackTrace();
 		}
 		
-		
-		if (Canguru.c1EstaNaCorrida) {
-			primeiroCanguru = 0;
-		} else if (Canguru.c2EstaNaCorrida) {
-			primeiroCanguru = 1;
-		} else if (Canguru.c3EstaNaCorrida) {
-			primeiroCanguru = 2;
-		} else if (Canguru.c4EstaNaCorrida) {
-			primeiroCanguru = 3;
-		} else if (Canguru.c5EstaNaCorrida) {
-			primeiroCanguru = 4;
-		}
-		
 		/*
 		 * serve para passar a vez quando for uma thread que ja terminou a corrida
 		 * se ela ja tiver pulado mais que a distancia do percurso ela passa a vez
 		 */
 		if (distanciaPulada >= distanciaTotal) {
-			Principal.canguruDaVez += 1;			
+			Principal.canguruDaVez += 1;
 			return buffer;
 		}
 		
@@ -71,19 +58,6 @@ public class SyncBuffer {
 		distanciaPulada += distanciaDoPulo;
 		System.err.println(Thread.currentThread().getName() + " pulou " + distanciaDoPulo + "m de " + distanciaTotal + "m, para um total de " + distanciaPulada + "m");
 		buffer = distanciaDoPulo;
-		
-		
-		if (Canguru.c5EstaNaCorrida) {
-			ultimoCanguru = 4;
-		} else if (Canguru.c4EstaNaCorrida) {
-			ultimoCanguru = 3;
-		} else if (Canguru.c3EstaNaCorrida) {
-			ultimoCanguru = 2;
-		} else if (Canguru.c2EstaNaCorrida) {
-			ultimoCanguru = 1;
-		} else if (Canguru.c1EstaNaCorrida) {
-			ultimoCanguru = 0;
-		}
 		
 		/*
 		 * serve para dar uma pausa na execucao das threads quando o ultimo canguru pula, assim ele apresenta 

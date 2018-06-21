@@ -2,11 +2,6 @@
 public class Canguru extends Thread {
 	private SyncBuffer buffer;
 	private int turnoDoCanguru = 0;
-	public static boolean c1EstaNaCorrida = true;
-	public static boolean c2EstaNaCorrida = true;
-	public static boolean c3EstaNaCorrida = true;
-	public static boolean c4EstaNaCorrida = true;
-	public static boolean c5EstaNaCorrida = true;
 	
 	/*
 	 * Construtor do canguru
@@ -33,7 +28,7 @@ public class Canguru extends Thread {
 		 */
 		while (distanciaPulada < Principal.distanciaTotal) {
 			try {
-				int distanciaDoPulo = Principal.distancia(0, 11);
+				int distanciaDoPulo = Principal.distancia(0, 10);
 				
 				distanciaPulada += buffer.pular(distanciaDoPulo, Principal.distanciaTotal, distanciaPulada, turnoDoCanguru);
 				
@@ -51,26 +46,6 @@ public class Canguru extends Thread {
 			System.err.println(Thread.currentThread().getName() + " terminou a corrida em " + Principal.colocacao + "º lugar");
 			Principal.colocacao++;
 			SyncBuffer.primeiroCanguru++;
-			
-			if(turnoDoCanguru == 0) {
-				c1EstaNaCorrida = false;
-			}
-			
-			if(turnoDoCanguru == 1) {
-				c2EstaNaCorrida = false;
-			}
-			
-			if(turnoDoCanguru == 2) {
-				c3EstaNaCorrida = false;
-			}
-			
-			if(turnoDoCanguru == 3) {
-				c4EstaNaCorrida = false;
-			}
-			
-			if(turnoDoCanguru == 4) {
-				c5EstaNaCorrida = false;
-			}
 		}
 		
 		/*
